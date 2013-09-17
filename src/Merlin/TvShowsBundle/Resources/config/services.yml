@@ -1,0 +1,7 @@
+parameters:
+#    merlin_tv_shows.example.class: Merlin\TvShowsBundle\Example
+
+services:
+#    merlin_tv_shows.example:
+#        class: %merlin_tv_shows.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

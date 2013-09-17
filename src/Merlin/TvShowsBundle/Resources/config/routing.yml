@@ -1,0 +1,3 @@
+merlin_tv_shows_homepage:
+    pattern:  /
+    defaults: { _controller: MerlinTvShowsBundle:Default:index }
