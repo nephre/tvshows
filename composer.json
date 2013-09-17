@@ -1,6 +1,6 @@
 {
     "name": "merlin/tv-shows",
-    "license": "BSD",
+    "license": "BSD-4-Clause",
     "type": "project",
     "description": "TV Shows management",
     "autoload": {
@@ -18,7 +18,8 @@
         "sensio/distribution-bundle": "2.3.*",
         "sensio/framework-extra-bundle": "2.3.*",
         "sensio/generator-bundle": "2.3.*",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+        "twitter/bootstrap": "*"
     },
     "require-dev": {
         "symfony/debug": "v2.3.4"
@@ -50,7 +51,7 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": {
-            "dev-master": "2.3-dev"
+            "dev-master": "1.0-dev"
         }
     }
 }
