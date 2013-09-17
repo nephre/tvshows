@@ -25,12 +25,13 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    cache: false
 
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ ]
+#    bundles:        [ MerlinTvShowsBundle ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
@@ -38,6 +39,17 @@ assetic:
         #    jar: %kernel.root_dir%/Resources/java/compiler.jar
         #yui_css:
         #    jar: %kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar
+    assets:
+        jquery_js:
+            inputs:
+                - %kernel.root_dir%/../vendor/frameworks/jquery/jquery.js
+        bootstrap_js:
+            inputs:
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/dist/js/bootstrap.js
+        bootstrap_css:
+            inputs:
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/dist/css/bootstrap.css
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/dist/css/bootstrap-theme.css
 
 # Doctrine Configuration
 doctrine:

@@ -19,7 +19,8 @@
         "sensio/framework-extra-bundle": "2.3.*",
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
-        "twitter/bootstrap": "*"
+        "twitter/bootstrap": "*",
+        "frameworks/jquery": "1.*"
     },
     "require-dev": {
         "symfony/debug": "v2.3.4"
