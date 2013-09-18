@@ -22,18 +22,6 @@ class ShowsController extends Controller
 {
     public function addAction()
     {
-        $defaults = array(
-            'season' => '1',
-            'episode' => '1',
-        );
-//        $form = $this->createFormBuilder($defaults)
-//            ->setAction($this->generateUrl('shows_add'))
-//            ->setMethod('POST')
-//            ->add('title', 'text')
-//            ->add('season', 'integer')
-//            ->add('episode', 'integer')
-//            ->getForm();
-
         $show = new TvShow;
         $form = $this->createForm('merlin_storebundle_tvshow', $show);
 
@@ -56,10 +44,15 @@ class ShowsController extends Controller
                 return $response->send();
             } else {
                 $errors = $this->get('validator')->validate($show);
-                return $this->render('MerlinTvShowsBundle:Shows:validate.html.twig', array('form' => $form->createView(), 'errors' => $errors));
+                return $this->render('MerlinTvShowsBundle:Shows:validate.html.twig', array('form' => $form->createView(), 'errors' => $errors, 'active' => 'add'));
             }
         }
 
-        return $this->render('MerlinTvShowsBundle:Shows:add.html.twig', array('form' => $form->createView()));
+        return $this->render('MerlinTvShowsBundle:Shows:add.html.twig', array('form' => $form->createView(), 'active' => 'add'));
+    }
+
+    public function editAction()
+    {
+
     }
 }

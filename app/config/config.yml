@@ -50,6 +50,12 @@ assetic:
             inputs:
                 - %kernel.root_dir%/../vendor/twitter/bootstrap/dist/css/bootstrap.css
                 - %kernel.root_dir%/../vendor/twitter/bootstrap/dist/css/bootstrap-theme.css
+        bootstrap_fonts:
+            inputs:
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/fonts/glyphicons-halflings-regular.eot
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/fonts/glyphicons-halflings-regular.svg fonts/glyphicons-halflings-regular.svg
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/fonts/glyphicons-halflings-regular.ttf fonts/glyphicons-halflings-regular.ttf
+                - %kernel.root_dir%/../vendor/twitter/bootstrap/fonts/glyphicons-halflings-regular.woff fonts/glyphicons-halflings-regular.woff
 
 # Doctrine Configuration
 doctrine:

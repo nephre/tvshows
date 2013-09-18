@@ -5,7 +5,7 @@
     <strong>Kurwa, zjebałeś, patrz co:</strong>
     <ul>
     {% for error in errors %}
-        <li>{{ error.message }}</li>
+        <li><em>{{ error.propertyPath }}</em>: {{ error.message }}</li>
     {% endfor %}
     </ul>
 </div>

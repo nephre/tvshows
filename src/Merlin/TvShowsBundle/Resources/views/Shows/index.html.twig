@@ -1,5 +1,15 @@
 {% extends 'MerlinTvShowsBundle::layout.html.twig' %}
 {% block title %}Main{% endblock %}
 {% block content %}
-Hello kurwa! {# {{ name }}! #}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Season</th>
+            <th>Episode</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+</table>
 {% endblock %}

@@ -5,3 +5,11 @@ merlin_tv_shows_homepage:
 shows_add:
     pattern: /shows/add
     defaults: { _controller: MerlinTvShowsBundle:Shows:add }
+
+shows_edit:
+    pattern: /shows/add/{id}
+    defaults: { _controller: MerlinTvShowsBundle:Shows:edit }
+
+fonts:
+    pattern: /fonts/{name}
+    defaults: { _controller: MerlinTvShowsBundle:Asset:fonts }

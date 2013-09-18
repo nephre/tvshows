@@ -15,6 +15,7 @@ class TvShowType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('id', 'hidden')
             ->add('title')
             ->add('season')
             ->add('episode')
