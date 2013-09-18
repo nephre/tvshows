@@ -1,3 +1,7 @@
+#merlin_store:
+#    resource: "@MerlinStoreBundle/Resources/config/routing.yml"
+#    prefix:   /
+
 merlin_tv_shows:
     resource: "@MerlinTvShowsBundle/Resources/config/routing.yml"
     prefix:   /

@@ -1,0 +1,12 @@
+{% extends 'MerlinTvShowsBundle:Shows:add.html.twig' %}
+{% block validation %}
+<div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>Kurwa, zjebałeś, patrz co:</strong>
+    <ul>
+    {% for error in errors %}
+        <li>{{ error.message }}</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

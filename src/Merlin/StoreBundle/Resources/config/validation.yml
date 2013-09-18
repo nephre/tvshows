@@ -1,0 +1,3 @@
+Merlin\StoreBundle\Entity\TvShow:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: title

@@ -22,8 +22,8 @@ Debug::enable();
 
 require_once __DIR__.'/../app/AppKernel.php';
 
-$kernel = new AppKernel(getenv('environment'), true);
-$kernel->loadClassCache();
+$kernel = new AppKernel('dev', true);
+//$kernel->loadClassCache();
 $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();

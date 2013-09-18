@@ -1,3 +1,7 @@
 merlin_tv_shows_homepage:
     pattern:  /
     defaults: { _controller: MerlinTvShowsBundle:Default:index }
+
+shows_add:
+    pattern: /shows/add
+    defaults: { _controller: MerlinTvShowsBundle:Shows:add }
