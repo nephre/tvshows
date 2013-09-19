@@ -1,6 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: "@MerlinTvShowsBundle/Resources/config/config.yml" }
 
 framework:
     #esi:             ~

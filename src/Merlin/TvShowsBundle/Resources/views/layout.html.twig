@@ -9,6 +9,12 @@
     <link type="text/css" href="{{ asset_url }}" rel="stylesheet" media="screen" />
 {% endstylesheets %}
 
+{% javascripts '@jquery_js' '@bootstrap_js' combine=false %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% block javascript %}
+{% endblock %}
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="" />

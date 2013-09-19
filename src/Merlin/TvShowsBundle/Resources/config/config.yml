@@ -1,0 +1,5 @@
+assetic:
+    assets:
+        add_show_js:
+            inputs:
+                - @MerlinTvShowsBundle/Resources/public/js/add_show.js

@@ -21,6 +21,12 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class AssetController extends Controller
 {
+    /**
+     * For TB fonts (quickie)
+     *
+     * @param  string $name
+     * @return Response
+     */
     public function fontsAction($name)
     {
         $root = realpath($this->get('kernel')->getRootDir() . '/../');
