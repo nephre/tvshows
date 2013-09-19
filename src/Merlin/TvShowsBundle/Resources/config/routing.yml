@@ -14,6 +14,10 @@ shows_delete:
     pattern: /shows/delete/{id}
     defaults: { _controller: MerlinTvShowsBundle:Shows:delete}
 
+shows_search:
+    pattern: /shows/search/{id}
+    defaults: { _controller: MerlinTvShowsBundle:Shows:search}
+
 fonts:
     pattern: /fonts/{name}
     defaults: { _controller: MerlinTvShowsBundle:Asset:fonts }

@@ -1,4 +1,9 @@
 $(function() {
+    $('button.searchShow').click(function() {
+        var url = $(this).attr('data-url');
+        location.href = url;
+    });
+
     $('button.editShow').click(function() {
         var url = $(this).attr('data-url');
         location.href = url;

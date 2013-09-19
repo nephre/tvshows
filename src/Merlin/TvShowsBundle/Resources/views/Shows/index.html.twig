@@ -37,7 +37,7 @@
                         <td>{{ show.season }}</td>
                         <td>{{ show.episode }}</td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm" title="Search on thepiratebay">
+                            <button data-url="{{ path('shows_search', { 'id' : show.id }) }}" type="button" class="searchShow btn btn-primary btn-sm" title="Search on thepiratebay">
                                 <span class="glyphicon glyphicon-search"></span>
                                 Search
                             </button>

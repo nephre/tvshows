@@ -21,7 +21,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "twitter/bootstrap": "*",
         "frameworks/jquery": "1.*",
-        "bmatzner/jquery-ui-bundle": "1.*"
+        "bmatzner/jquery-ui-bundle": "1.*",
+        "fabpot/goutte": "*"
     },
     "require-dev": {
         "symfony/debug": "v2.3.4"

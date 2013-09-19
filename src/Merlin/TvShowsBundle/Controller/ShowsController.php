@@ -11,10 +11,12 @@ namespace Merlin\TvShowsBundle\Controller;
 
 use Merlin\TvShowsBundle\Entity\TvShow;
 use Merlin\TvShowsBundle\Form as Form;
+use Merlin\TvShowsBundle\SearchProvider\ThePirateBay;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @package     R-Infiniti
@@ -126,5 +128,23 @@ class ShowsController extends Controller
 
         $response = new RedirectResponse($this->generateUrl('merlin_tv_shows_homepage'));
         return $response->send();
+    }
+
+    public function searchAction($id)
+    {
+        /** @var TvShow $show */
+        $show = $this
+            ->getDoctrine()
+            ->getRepository('MerlinTvShowsBundle:TvShow')
+            ->find($id);
+
+        if (! $show) {
+            throw $this->createNotFoundException('Show not found: id ' . $id);
+        }
+
+        $searchProvider = new ThePirateBay;
+        $results = $searchProvider->search($show);
+
+        return $this->render('MerlinTvShowsBundle:Shows:search.html.twig', array('results' => $results));
     }
 }
