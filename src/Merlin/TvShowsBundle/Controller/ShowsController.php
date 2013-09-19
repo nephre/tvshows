@@ -14,7 +14,7 @@ use Merlin\TvShowsBundle\Form as Form;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine;
+use Doctrine\ORM\EntityManager;
 
 /**
  * @package     R-Infiniti
@@ -24,7 +24,7 @@ class ShowsController extends Controller
 {
     public function indexAction()
     {
-        /** @var Doctrine\ORM\EntityManager $em*/
+        /** @var EntityManager $em*/
         $em = $this->getDoctrine()->getManager();
         $shows = $em
             ->createQuery('SELECT t FROM MerlinTvShowsBundle:TvShow t ORDER BY t.title ASC')
