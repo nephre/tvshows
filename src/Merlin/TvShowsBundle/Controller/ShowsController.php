@@ -9,8 +9,8 @@
  */
 namespace Merlin\TvShowsBundle\Controller;
 
-use Merlin\StoreBundle\Entity\TvShow;
-use Merlin\StoreBundle\Form as Form;
+use Merlin\TvShowsBundle\Entity\TvShow;
+use Merlin\TvShowsBundle\Form as Form;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +23,7 @@ class ShowsController extends Controller
     public function addAction()
     {
         $show = new TvShow;
-        $form = $this->createForm('merlin_storebundle_tvshow', $show);
+        $form = $this->createForm('merlin_tvshowsbundle_tvshow', $show);
 
         $request = Request::createFromGlobals();
 

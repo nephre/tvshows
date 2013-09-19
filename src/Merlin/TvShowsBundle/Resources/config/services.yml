@@ -5,3 +5,7 @@ services:
 #    merlin_tv_shows.example:
 #        class: %merlin_tv_shows.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+    merlin.tv_shows.form.type.tvshow:
+        class: Merlin\TvShowsBundle\Form\TvShowType
+        tags:
+            - { name: form.type, alias: merlin_tvshowsbundle_tvshow }

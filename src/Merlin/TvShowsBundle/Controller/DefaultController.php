@@ -3,7 +3,7 @@
 namespace Merlin\TvShowsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Merlin\StoreBundle\Entity;
+use Merlin\TvShowsBundle\Entity;
 use Doctrine;
 
 class DefaultController extends Controller
@@ -13,7 +13,7 @@ class DefaultController extends Controller
         /** @var Doctrine\ORM\EntityManager $em*/
         $em = $this->getDoctrine()->getManager();
         $shows = $em
-            ->createQuery('SELECT t FROM MerlinStoreBundle:TvShow t ORDER BY t.title ASC')
+            ->createQuery('SELECT t FROM MerlinTvShowsBundle:TvShow t ORDER BY t.title ASC')
             ->execute();
 
         return $this->render('MerlinTvShowsBundle:Default:index.html.twig', array('shows' => $shows));

@@ -1,6 +1,6 @@
 <?php
 
-namespace Merlin\StoreBundle\Form;
+namespace Merlin\TvShowsBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,7 +29,7 @@ class TvShowType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Merlin\StoreBundle\Entity\TvShow'
+            'data_class' => 'Merlin\TvShowsBundle\Entity\TvShow'
         ));
     }
 
@@ -38,6 +38,6 @@ class TvShowType extends AbstractType
      */
     public function getName()
     {
-        return 'merlin_storebundle_tvshow';
+        return 'merlin_tvshowsbundle_tvshow';
     }
 }

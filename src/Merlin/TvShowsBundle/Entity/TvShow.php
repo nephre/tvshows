@@ -7,7 +7,7 @@
  * @copyright   2013 SMT Software S.A.
  * @filesource
  */
-namespace Merlin\StoreBundle\Entity;
+namespace Merlin\TvShowsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\DateTime;
 
