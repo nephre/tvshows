@@ -14,12 +14,25 @@ use Merlin\TvShowsBundle\Form as Form;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine;
+
 /**
  * @package     R-Infiniti
  * @author      Daniel Jeznach <daniel.jeznach@smtsoftware.com>
  */
 class ShowsController extends Controller
 {
+    public function indexAction()
+    {
+        /** @var Doctrine\ORM\EntityManager $em*/
+        $em = $this->getDoctrine()->getManager();
+        $shows = $em
+            ->createQuery('SELECT t FROM MerlinTvShowsBundle:TvShow t ORDER BY t.title ASC')
+            ->execute();
+
+        return $this->render('MerlinTvShowsBundle:Shows:index.html.twig', array('shows' => $shows));
+    }
+
     public function addAction()
     {
         $show = new TvShow;
@@ -30,7 +43,7 @@ class ShowsController extends Controller
             $form->submit($request);
 
             if ($form->isValid()) {
-                $show->upateAccess();
+                $show->updateAccess();
 
                 // save data to db
                 $em = $this->getDoctrine()->getManager();
@@ -69,7 +82,22 @@ class ShowsController extends Controller
         $request = Request::createFromGlobals();
 
         if ($request->isMethod('POST')) {
+            $form->submit($request);
 
+            if ($form->isValid()) {
+                $show->updateAccess();
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($show);
+                $em->flush();
+
+                $this->get('session')
+                    ->getFlashBag()
+                    ->add('notice', $show->getTitle() . ' has been updated.');
+
+                $response = new RedirectResponse($this->generateUrl('merlin_tv_shows_homepage'));
+                return $response->send();
+            }
         }
 
         return $this->render('MerlinTvShowsBundle:Shows:edit.html.twig', array('form' => $form->createView(), 'id' => $id));

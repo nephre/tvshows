@@ -1,15 +1,59 @@
 {% extends 'MerlinTvShowsBundle::layout.html.twig' %}
 {% block title %}Main{% endblock %}
+{% block javascript %}
+    {% javascripts '@list_shows_js' combine=false %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
 {% block content %}
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Title</th>
-            <th>Season</th>
-            <th>Episode</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-</table>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">List of TV series you watch</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Season</th>
+                    <th>Episode</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for show in shows %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ show.title }}</td>
+                        <td>{{ show.season }}</td>
+                        <td>{{ show.episode }}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm" title="Search on thepiratebay">
+                                <span class="glyphicon glyphicon-search"></span>
+                                Search
+                            </button>
+                            <button data-url="{{ path('shows_edit', { 'id' : show.id }) }}" type="button" class="editShow btn btn-default btn-sm" title="Edit details">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                Edit
+                            </button>
+                            <button data-url="{{ path('shows_delete', { 'id' : show.id }) }}" type="button" class="deleteShow btn btn-default btn-sm" title="Remove from tracked shows">
+                                <span class="glyphicon glyphicon-remove" title="Remove"></span>
+                                Remove
+                            </button
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div
 {% endblock %}

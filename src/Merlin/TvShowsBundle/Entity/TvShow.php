@@ -59,7 +59,7 @@ class TvShow
      *
      * @return TvShow
      */
-    public function upateAccess()
+    public function updateAccess()
     {
         $this->setLastUpdate(new \DateTime);
         return $this;
