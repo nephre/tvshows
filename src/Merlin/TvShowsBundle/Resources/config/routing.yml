@@ -7,7 +7,7 @@ shows_add:
     defaults: { _controller: MerlinTvShowsBundle:Shows:add }
 
 shows_edit:
-    pattern: /shows/add/{id}
+    pattern: /shows/edit/{id}
     defaults: { _controller: MerlinTvShowsBundle:Shows:edit }
 
 fonts:

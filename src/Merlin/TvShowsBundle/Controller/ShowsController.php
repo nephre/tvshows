@@ -24,7 +24,6 @@ class ShowsController extends Controller
     {
         $show = new TvShow;
         $form = $this->createForm('merlin_tvshowsbundle_tvshow', $show);
-
         $request = Request::createFromGlobals();
 
         if ($request->isMethod('POST')) {
@@ -51,8 +50,24 @@ class ShowsController extends Controller
         return $this->render('MerlinTvShowsBundle:Shows:add.html.twig', array('form' => $form->createView(), 'active' => 'add'));
     }
 
-    public function editAction()
+    public function editAction($id)
     {
+        $show = $this
+            ->getDoctrine()
+            ->getRepository('MerlinTvShowsBundle:TvShow')
+            ->find($id);
 
+        if (! $show) {
+            throw $this->createNotFoundException('Show not found: id ' . $id);
+        }
+
+        $form = $this->createForm('merlin_tvshowsbundle_tvshow', $show);
+        $request = Request::createFromGlobals();
+
+        if ($request->isMethod('POST')) {
+
+        }
+
+        return $this->render('MerlinTvShowsBundle:Shows:edit.html.twig', array('form' => $form->createView(), 'id' => $id));
     }
 }

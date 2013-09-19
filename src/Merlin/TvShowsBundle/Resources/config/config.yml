@@ -3,3 +3,9 @@ assetic:
         add_show_js:
             inputs:
                 - @MerlinTvShowsBundle/Resources/public/js/add_show.js
+        list_shows_js:
+            inputs:
+                - @MerlinTvShowsBundle/Resources/public/js/list_shows.js
+        edit_show_js:
+            inputs:
+                - @MerlinTvShowsBundle/Resources/public/js/edit_show.js

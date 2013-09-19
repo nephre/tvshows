@@ -1,5 +1,10 @@
 {% extends 'MerlinTvShowsBundle::layout.html.twig' %}
 {% block title %}Main{% endblock %}
+{% block javascript %}
+{% javascripts '@list_shows_js' combine=false %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}
 {% block content %}
 
 <div class="panel panel-default">
@@ -29,7 +34,7 @@
                             <span class="glyphicon glyphicon-search"></span>
                             Search
                         </button>
-                        <button type="button" class="btn btn-default btn-sm" title="Edit details">
+                        <button data-url="{{ path('shows_edit', { 'id' : show.id }) }}" type="button" class="editShow btn btn-default btn-sm" title="Edit details">
                             <span class="glyphicon glyphicon-pencil"></span>
                             Edit
                         </button>
