@@ -37,6 +37,10 @@ class ShowsController extends Controller
                 $em->persist($show);
                 $em->flush();
 
+                $this->get('session')
+                    ->getFlashBag()
+                    ->add('notice', $show->getTitle() . ' has been added.');
+
                 $response = new RedirectResponse($this->generateUrl('merlin_tv_shows_homepage'));
                 $response->prepare($request);
 
@@ -69,5 +73,30 @@ class ShowsController extends Controller
         }
 
         return $this->render('MerlinTvShowsBundle:Shows:edit.html.twig', array('form' => $form->createView(), 'id' => $id));
+    }
+
+    public function deleteAction($id){
+        /** @var TvShow $show */
+        $show = $this
+            ->getDoctrine()
+            ->getRepository('MerlinTvShowsBundle:TvShow')
+            ->find($id);
+
+        if (! $show) {
+            throw $this->createNotFoundException('Show not found: id ' . $id);
+        }
+
+        $name = $show->getTitle();
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($show);
+        $em->flush();
+
+        $this->get('session')
+            ->getFlashBag()
+            ->add('notice', $name . ' has been removed.');
+
+        $response = new RedirectResponse($this->generateUrl('merlin_tv_shows_homepage'));
+        return $response->send();
     }
 }

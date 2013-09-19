@@ -6,6 +6,7 @@ assetic:
         list_shows_js:
             inputs:
                 - @MerlinTvShowsBundle/Resources/public/js/list_shows.js
+                - @MerlinTvShowsBundle/Resources/public/js/confirmationDialog.js
         edit_show_js:
             inputs:
                 - @MerlinTvShowsBundle/Resources/public/js/edit_show.js

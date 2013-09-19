@@ -10,6 +10,14 @@ shows_edit:
     pattern: /shows/edit/{id}
     defaults: { _controller: MerlinTvShowsBundle:Shows:edit }
 
+shows_delete:
+    pattern: /shows/delete/{id}
+    defaults: { _controller: MerlinTvShowsBundle:Shows:delete}
+
 fonts:
     pattern: /fonts/{name}
     defaults: { _controller: MerlinTvShowsBundle:Asset:fonts }
+
+cssimages:
+    pattern: /css/images/{name}
+    defaults: { _controller: MerlinTvShowsBundle:Asset:cssimages }

@@ -5,7 +5,7 @@
     <title>TV Shows Manager :: {% block title %}{% endblock %}</title>
 
     <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
-{% stylesheets '@bootstrap_css' combine=false %}
+{% stylesheets '@bootstrap_css' '@jquery_css' combine=false %}
     <link type="text/css" href="{{ asset_url }}" rel="stylesheet" media="screen" />
 {% endstylesheets %}
 

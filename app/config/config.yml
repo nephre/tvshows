@@ -44,6 +44,10 @@ assetic:
         jquery_js:
             inputs:
                 - %kernel.root_dir%/../vendor/frameworks/jquery/jquery.js
+                - %kernel.root_dir%/../vendor/bmatzner/jquery-ui-bundle/Bmatzner/JQueryUIBundle/Resources/public/js/jquery-ui.js
+        jquery_css:
+            input:
+                - %kernel.root_dir%/../vendor/bmatzner/jquery-ui-bundle/Bmatzner/JQueryUIBundle/Resources/public/css/base/jquery-ui.css
         bootstrap_js:
             inputs:
                 - %kernel.root_dir%/../vendor/twitter/bootstrap/dist/js/bootstrap.js
