@@ -130,7 +130,7 @@ class ShowsController extends Controller
         return $response->send();
     }
 
-    public function searchAction($provider, $id)
+    public function searchAction($id, $provider)
     {
         /** @var TvShow $show */
         $show = $this

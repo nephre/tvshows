@@ -9,18 +9,27 @@ shows_add:
 shows_edit:
     pattern: /shows/edit/{id}
     defaults: { _controller: MerlinTvShowsBundle:Shows:edit }
+    requirements:
+        id: \d+
 
 shows_delete:
     pattern: /shows/delete/{id}
     defaults: { _controller: MerlinTvShowsBundle:Shows:delete}
+    requirements:
+        id: \d+
 
 shows_search:
-    pattern: /shows/search/{provider}/{id}
+    pattern: /shows/search/{id}/{provider}
     defaults: { _controller: MerlinTvShowsBundle:Shows:search}
+    requirements:
+        id: \d+
+        provider: \w*
 
 shows_episode:
     pattern: /shows/episode/{id}/{mode}
     defaults: { _controller: MerlinTvShowsBundle:Shows:episode}
+    requirements:
+        id: \d+
 
 fonts:
     pattern: /fonts/{name}

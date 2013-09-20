@@ -49,7 +49,7 @@
                         <td>{{ show.season }}</td>
                         <td>{{ show.episode }}</td>
                         <td>
-                            <a href="{{ path('shows_search', { 'id' : show.id, 'provider' : '-PROVIDER-' }) }}" class="searchShow" title="Search on thepiratebay">
+                            <a href="{{ path('shows_search', { 'id' : show.id, 'provider' : null }) }}" class="searchShow" title="Search on thepiratebay">
                                 <span class="glyphicon glyphicon-search"></span>
                             </a>
                             <a href="{{ path('shows_episode', { 'id'  : show.id, 'mode' : 'previous' }) }}" class="previousEpisode" title="Previous episode">

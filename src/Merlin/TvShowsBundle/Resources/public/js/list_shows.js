@@ -16,9 +16,8 @@ $(function() {
 
     $('a.searchShow').click(function(e) {
         e.preventDefault();
-        var url = $(this).attr('href');
         var provider = $('#searchProvider').val();
-        var url = url.replace('-PROVIDER-', provider);
+        var url = $(this).attr('href') + provider;
 
         location.href = url;
     });
