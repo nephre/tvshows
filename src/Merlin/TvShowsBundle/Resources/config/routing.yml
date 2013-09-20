@@ -18,6 +18,10 @@ shows_search:
     pattern: /shows/search/{id}
     defaults: { _controller: MerlinTvShowsBundle:Shows:search}
 
+shows_episode:
+    pattern: /shows/episode/{id}/{mode}
+    defaults: { _controller: MerlinTvShowsBundle:Shows:episode}
+
 fonts:
     pattern: /fonts/{name}
     defaults: { _controller: MerlinTvShowsBundle:Asset:fonts }

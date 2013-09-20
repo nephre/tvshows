@@ -162,4 +162,32 @@ class TvShow
     {
         return $this->lastUpdate;
     }
+
+    /**
+     * Set next episode
+     *
+     * @author Daniel Jeznach <daniel.jeznach@smtsoftware.com>
+     * @access public
+     *
+     * @return TvShow
+     */
+    public function nextEpisode()
+    {
+        $this->episode++;
+        return $this;
+    }
+
+    /**
+     * Set previous episode
+     *
+     * @author Daniel Jeznach <daniel.jeznach@smtsoftware.com>
+     * @access public
+     *
+     * @return TvShow
+     */
+    public function previousEpisode()
+    {
+        $this->episode--;
+        return $this;
+    }
 }

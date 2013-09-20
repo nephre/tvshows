@@ -37,18 +37,21 @@
                         <td>{{ show.season }}</td>
                         <td>{{ show.episode }}</td>
                         <td>
-                            <button data-url="{{ path('shows_search', { 'id' : show.id }) }}" type="button" class="searchShow btn btn-primary btn-sm" title="Search on thepiratebay">
+                            <a href="{{ path('shows_search', { 'id' : show.id }) }}" class="searchShow" title="Search on thepiratebay">
                                 <span class="glyphicon glyphicon-search"></span>
-                                Search
-                            </button>
-                            <button data-url="{{ path('shows_edit', { 'id' : show.id }) }}" type="button" class="editShow btn btn-default btn-sm" title="Edit details">
+                            </a>
+                            <a href="{{ path('shows_episode', { 'id'  : show.id, 'mode' : 'previous' }) }}" class="previousEpisode" title="Previous episode">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a href="{{ path('shows_episode', { 'id'  : show.id, 'mode' : 'next' }) }}" class="nextEpisode" title="Next episode">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                            <a href="{{ path('shows_edit', { 'id' : show.id }) }}" class="editShow" title="Edit details">
                                 <span class="glyphicon glyphicon-pencil"></span>
-                                Edit
-                            </button>
-                            <button data-url="{{ path('shows_delete', { 'id' : show.id }) }}" type="button" class="deleteShow btn btn-default btn-sm" title="Remove from tracked shows">
-                                <span class="glyphicon glyphicon-remove" title="Remove"></span>
-                                Remove
-                            </button
+                            </a>
+                            <a href="{{ path('shows_delete', { 'id' : show.id }) }}" class="deleteShow" title="Remove from tracked shows">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}

@@ -147,4 +147,30 @@ class ShowsController extends Controller
 
         return $this->render('MerlinTvShowsBundle:Shows:search.html.twig', array('results' => $results));
     }
+
+    public function episodeAction($id, $mode)
+    {
+        /** @var TvShow $show */
+        $show = $this
+            ->getDoctrine()
+            ->getRepository('MerlinTvShowsBundle:TvShow')
+            ->find($id);
+
+        if (! $show) {
+            throw $this->createNotFoundException('Show not found: id ' . $id);
+        }
+
+        if ($mode == 'next') {
+            $show->nextEpisode();
+        } else if ($mode == 'previous') {
+            $show->previousEpisode();
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($show);
+        $em->flush();
+
+        $response = new RedirectResponse($this->generateUrl('merlin_tv_shows_homepage'));
+        $response->send();
+    }
 }

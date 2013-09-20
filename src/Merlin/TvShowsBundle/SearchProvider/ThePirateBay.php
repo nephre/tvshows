@@ -75,6 +75,9 @@ class ThePirateBay implements SearchProviderInterface
         $client = new Client;
         $crawler = $client->request('GET', $url);
         $results = $crawler->filter('tr')->each(function(Crawler $node, $i) {
+            if ($i == 0) {
+                return null;
+            }
             $result = new SearchResult;
             $result->setName($node->filter('a')->eq(2)->html());
             $result->setUrl($node->filter('a')->eq(3)->link()->getUri());
@@ -84,6 +87,7 @@ class ThePirateBay implements SearchProviderInterface
             return $result;
         });
 
+        unset($results[0]);
         return $results;
     }
 }
