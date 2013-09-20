@@ -30,6 +30,7 @@ shows_episode:
     defaults: { _controller: MerlinTvShowsBundle:Shows:episode}
     requirements:
         id: \d+
+        mode: next|previous
 
 fonts:
     pattern: /fonts/{name}

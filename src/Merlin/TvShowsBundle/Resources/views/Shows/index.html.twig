@@ -52,9 +52,9 @@
                             <a href="{{ path('shows_search', { 'id' : show.id, 'provider' : null }) }}" class="searchShow" title="Search on thepiratebay">
                                 <span class="glyphicon glyphicon-search"></span>
                             </a>
-                            <a href="{{ path('shows_episode', { 'id'  : show.id, 'mode' : 'previous' }) }}" class="previousEpisode" title="Previous episode">
+                            {% if show.episode > 1 %}<a href="{{ path('shows_episode', { 'id'  : show.id, 'mode' : 'previous' }) }}" class="previousEpisode" title="Previous episode">{% endif %}
                                 <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
+                            {% if show.episode > 1 %}</a>{% endif %}
                             <a href="{{ path('shows_episode', { 'id'  : show.id, 'mode' : 'next' }) }}" class="nextEpisode" title="Next episode">
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>

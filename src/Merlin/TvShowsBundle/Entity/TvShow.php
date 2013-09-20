@@ -187,7 +187,10 @@ class TvShow
      */
     public function previousEpisode()
     {
-        $this->episode--;
+        if ($this->episode > 1) {
+            $this->episode--;
+        }
+
         return $this;
     }
 }
