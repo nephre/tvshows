@@ -166,6 +166,8 @@ class ShowsController extends Controller
             $show->previousEpisode();
         }
 
+        $show->updateAccess();
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($show);
         $em->flush();
