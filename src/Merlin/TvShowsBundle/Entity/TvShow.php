@@ -37,13 +37,13 @@ class TvShow
      * @var int
      * @ORM\Column(name="season", type="integer")
      */
-    protected $season;
+    protected $season = 1;
 
     /**
      * @var int
      * @ORM\Column(name="episode", type="integer")
      */
-    protected $episode;
+    protected $episode = 1;
 
     /**
      * @var int
