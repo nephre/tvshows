@@ -1,6 +1,6 @@
 {
     "name": "merlin/tv-shows",
-    "license": "BSD-4-Clause",
+    "license": "MIT",
     "type": "project",
     "description": "TV Shows management",
     "autoload": {
