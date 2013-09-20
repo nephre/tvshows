@@ -20,6 +20,9 @@ use Symfony\Component\DomCrawler\Link;
  */
 class Isohunt extends AbstractSearchProvider
 {
+    /** @var string */
+    protected $_query;
+
     /**
      * Returns URL to the results page
      *
@@ -31,7 +34,8 @@ class Isohunt extends AbstractSearchProvider
      */
     public function getSearchUrl($query)
     {
-        return sprintf('http://isohunt.com/torrents/%s?iht=-1&ihp=1&ihs1=1&iho1=d',urlencode($query));
+        $this->_query = urlencode($query);
+        return sprintf('http://isohunt.com/torrents/%s?iht=-1&ihp=1&ihs1=1&iho1=d', $this->_query);
     }
 
     /**
@@ -47,15 +51,35 @@ class Isohunt extends AbstractSearchProvider
     {
         $client = new Client;
         $crawler = $client->request('GET', $url);
-        $results = $crawler->filter('tr.hlRow')->each(function(Crawler $node, $i) {
+        $query = $this->_query;
+        $results = $crawler->filter('tr.hlRow')->each(function(Crawler $node, $i) use ($query) {
             if ($i == 0) {
                 return null;
             }
+
+            // get torrent id
+            $detailsLink = $node->filter('a')->eq(1)->link()->getUri();
+
+            // "torrent verified" - move to another link. Lame solution, will work sth clean later
+            if (strpos($detailsLink, 'torrent_details') === false) {
+                $detailsLink = $node->filter('a')->eq(2)->link()->getUri();
+                $titleIdx = 3;
+            } else {
+                $titleIdx = 2;
+            }
+
+            preg_match('|^.+/torrent_details/([0-9]+)/.+$|', $detailsLink, $matches);
+            $torrentId = $matches[1];
+//            $torrentUrl = sprintf('http://ca.isohunt.com/download/%s/%s.torrent', $torrentId, $query);
+            // Isohunt probably checks referer url, thus direct url to torrent does not work.
+            // fix it later...
+            $torrentUrl = sprintf('http://isohunt.com/torrent_details/%s/%s.torrent', $torrentId, $query);
+
             $result = new SearchResult;
-            $result->setName($node->filter('a')->eq(2)->html());
-            $result->setUrl($node->filter('a')->eq(3)->link()->getUri());
-            $result->setSeeders($node->filter('td')->eq(2)->html());
-            $result->setLeechers($node->filter('td')->eq(3)->html());
+            $result->setName($node->filter('a')->eq($titleIdx)->text());
+            $result->setUrl($torrentUrl);
+            $result->setSeeders($node->filter('td')->eq(4)->html());
+            $result->setLeechers($node->filter('td')->eq(5)->html());
 
             return $result;
         });
