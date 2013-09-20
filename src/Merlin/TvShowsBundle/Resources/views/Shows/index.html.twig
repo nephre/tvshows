@@ -1,12 +1,11 @@
 {% extends 'MerlinTvShowsBundle::layout.html.twig' %}
 {% block title %}Main{% endblock %}
 {% block javascript %}
-    {% javascripts '@list_shows_js' combine=false %}
+{% javascripts '@list_shows_js' combine=false %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
-    {% endjavascripts %}
+{% endjavascripts %}
 {% endblock %}
 {% block content %}
-
     {% for flashMessage in app.session.flashbag.get('notice') %}
         <div class="alert alert-success alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -19,6 +18,19 @@
             <h3 class="panel-title">List of TV series you watch</h3>
         </div>
         <div class="panel-body">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="searchProvider" class="col-xs-3 col-md-2 control-label">Search provider</label>
+                    <div class="col-xs-4">
+                        <select id="searchProvider" class="form-control">
+                        {% for provider in providers %}
+                            <option value="{{ provider.name }}">{{ provider.description}}</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </form>
+
             <table class="table table-striped table-hover">
                 <thead>
                 <tr>
@@ -37,7 +49,7 @@
                         <td>{{ show.season }}</td>
                         <td>{{ show.episode }}</td>
                         <td>
-                            <a href="{{ path('shows_search', { 'id' : show.id }) }}" class="searchShow" title="Search on thepiratebay">
+                            <a href="{{ path('shows_search', { 'id' : show.id, 'provider' : '-PROVIDER-' }) }}" class="searchShow" title="Search on thepiratebay">
                                 <span class="glyphicon glyphicon-search"></span>
                             </a>
                             <a href="{{ path('shows_episode', { 'id'  : show.id, 'mode' : 'previous' }) }}" class="previousEpisode" title="Previous episode">

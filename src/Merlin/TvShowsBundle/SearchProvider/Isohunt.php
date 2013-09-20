@@ -1,6 +1,6 @@
 <?php
 /**
- * ThePirateBay class container 
+ * Isohunt class container 
  *
  * @package     R-Infiniti
  * @version     $Id$
@@ -9,19 +9,16 @@
  */
 namespace Merlin\TvShowsBundle\SearchProvider;
 
-use Goutte\Client;
 use Merlin\TvShowsBundle\Entity\SearchResult;
+use Goutte\Client;
 use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\DomCrawler\Link;
-
 /**
- * thepiratebay.sx search provider
- *
  * @package     R-Infiniti
  * @author      Daniel Jeznach <daniel.jeznach@smtsoftware.com>
  */
-class ThePirateBay extends AbstractSearchProvider
+class Isohunt extends AbstractSearchProvider
 {
     /**
      * Returns URL to the results page
@@ -34,7 +31,7 @@ class ThePirateBay extends AbstractSearchProvider
      */
     public function getSearchUrl($query)
     {
-        return sprintf('http://thepiratebay.sx/search/%s/0/7/0', urlencode($query));
+        return sprintf('http://isohunt.com/torrents/%s?iht=-1&ihp=1&ihs1=1&iho1=d',urlencode($query));
     }
 
     /**
@@ -50,7 +47,7 @@ class ThePirateBay extends AbstractSearchProvider
     {
         $client = new Client;
         $crawler = $client->request('GET', $url);
-        $results = $crawler->filter('tr')->each(function(Crawler $node, $i) {
+        $results = $crawler->filter('tr.hlRow')->each(function(Crawler $node, $i) {
             if ($i == 0) {
                 return null;
             }

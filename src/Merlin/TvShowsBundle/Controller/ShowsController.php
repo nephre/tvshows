@@ -11,7 +11,7 @@ namespace Merlin\TvShowsBundle\Controller;
 
 use Merlin\TvShowsBundle\Entity\TvShow;
 use Merlin\TvShowsBundle\Form as Form;
-use Merlin\TvShowsBundle\SearchProvider\ThePirateBay;
+use Merlin\TvShowsBundle\SearchProvider\AbstractSearchProvider;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +32,7 @@ class ShowsController extends Controller
             ->createQuery('SELECT t FROM MerlinTvShowsBundle:TvShow t ORDER BY t.title ASC')
             ->execute();
 
-        return $this->render('MerlinTvShowsBundle:Shows:index.html.twig', array('shows' => $shows));
+        return $this->render('MerlinTvShowsBundle:Shows:index.html.twig', array('shows' => $shows, 'providers' => AbstractSearchProvider::getProviders()));
     }
 
     public function addAction()
@@ -130,7 +130,7 @@ class ShowsController extends Controller
         return $response->send();
     }
 
-    public function searchAction($id)
+    public function searchAction($provider, $id)
     {
         /** @var TvShow $show */
         $show = $this
@@ -142,7 +142,7 @@ class ShowsController extends Controller
             throw $this->createNotFoundException('Show not found: id ' . $id);
         }
 
-        $searchProvider = new ThePirateBay;
+        $searchProvider = AbstractSearchProvider::getProvider($provider);
         $results = $searchProvider->search($show);
 
         return $this->render('MerlinTvShowsBundle:Shows:search.html.twig', array('results' => $results));

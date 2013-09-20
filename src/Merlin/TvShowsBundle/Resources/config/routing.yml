@@ -15,7 +15,7 @@ shows_delete:
     defaults: { _controller: MerlinTvShowsBundle:Shows:delete}
 
 shows_search:
-    pattern: /shows/search/{id}
+    pattern: /shows/search/{provider}/{id}
     defaults: { _controller: MerlinTvShowsBundle:Shows:search}
 
 shows_episode:
