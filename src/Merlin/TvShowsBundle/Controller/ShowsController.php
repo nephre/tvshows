@@ -12,17 +12,16 @@ namespace Merlin\TvShowsBundle\Controller;
 use Merlin\TvShowsBundle\Entity\TvShow;
 use Merlin\TvShowsBundle\Form as Form;
 use Merlin\TvShowsBundle\SearchProvider\AbstractSearchProvider;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * @package     R-Infiniti
  * @author      Daniel Jeznach <daniel.jeznach@smtsoftware.com>
  */
-class ShowsController extends Controller
+class ShowsController extends AbstractController
 {
     public function indexAction()
     {
@@ -52,9 +51,7 @@ class ShowsController extends Controller
                 $em->persist($show);
                 $em->flush();
 
-                $this->get('session')
-                    ->getFlashBag()
-                    ->add('notice', $show->getTitle() . ' has been added.');
+                $this->flashMessage($show->getTitle() . ' has been added.', 'notice');
 
                 $response = new RedirectResponse($this->generateUrl('merlin_tv_shows_homepage'));
                 $response->prepare($request);
@@ -93,9 +90,7 @@ class ShowsController extends Controller
                 $em->persist($show);
                 $em->flush();
 
-                $this->get('session')
-                    ->getFlashBag()
-                    ->add('notice', $show->getTitle() . ' has been updated.');
+                $this->flash($show->getTitle() . ' has been updated');
 
                 $response = new RedirectResponse($this->generateUrl('merlin_tv_shows_homepage'));
                 return $response->send();
@@ -116,15 +111,11 @@ class ShowsController extends Controller
             throw $this->createNotFoundException('Show not found: id ' . $id);
         }
 
-        $name = $show->getTitle();
-
         $em = $this->getDoctrine()->getManager();
         $em->remove($show);
         $em->flush();
 
-        $this->get('session')
-            ->getFlashBag()
-            ->add('notice', $name . ' has been removed.');
+        $this->flashMessage($show->getTitle() . ' has been removed.', 'notice');
 
         $response = new RedirectResponse($this->generateUrl('merlin_tv_shows_homepage'));
         return $response->send();
