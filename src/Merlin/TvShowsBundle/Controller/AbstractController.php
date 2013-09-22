@@ -20,7 +20,10 @@ use Symfony\Component\HttpFoundation\Response;
  */
 abstract class AbstractController extends Controller
 {
-
+    /**
+     * @param string $message
+     * @param string $type
+     */
     public function flashMessage($message, $type)
     {
         $this->get('session')

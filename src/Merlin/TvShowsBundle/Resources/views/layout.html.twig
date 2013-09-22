@@ -35,14 +35,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ path('merlin_tv_shows_homepage') }}">TV Shows Manager</a>
+                    <a class="navbar-brand">TV Shows Manager</a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ path('merlin_tv_shows_homepage') }}">Shows</a></li>
-                        <li><a href="{{ path('shows_add') }}">Add show</a></li>
+                        <li{% if shows_active is defined %} class="active"{% endif %}><a href="{{ path('merlin_tv_shows_homepage') }}">Shows</a></li>
+                        <li{% if add_show_active is defined %} class="active"{% endif %}><a href="{{ path('shows_add') }}">Add show</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav>

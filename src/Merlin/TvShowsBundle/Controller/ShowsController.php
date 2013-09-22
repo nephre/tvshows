@@ -31,7 +31,9 @@ class ShowsController extends AbstractController
             ->createQuery('SELECT t FROM MerlinTvShowsBundle:TvShow t ORDER BY t.title ASC')
             ->execute();
 
-        return $this->render('MerlinTvShowsBundle:Shows:index.html.twig', array('shows' => $shows, 'providers' => AbstractSearchProvider::getProviders()));
+        return $this->render(
+            'MerlinTvShowsBundle:Shows:index.html.twig',
+            array('shows' => $shows, 'providers' => AbstractSearchProvider::getProviders(), 'shows_active' => true));
     }
 
     public function addAction()
@@ -63,7 +65,9 @@ class ShowsController extends AbstractController
             }
         }
 
-        return $this->render('MerlinTvShowsBundle:Shows:add.html.twig', array('form' => $form->createView(), 'active' => 'add'));
+        return $this->render(
+            'MerlinTvShowsBundle:Shows:add.html.twig',
+            array('form' => $form->createView(), 'active' => 'add', 'add_show_active' => true));
     }
 
     public function editAction($id)
@@ -136,7 +140,9 @@ class ShowsController extends AbstractController
         $searchProvider = AbstractSearchProvider::getProvider($provider);
         $results = $searchProvider->search($show);
 
-        return $this->render('MerlinTvShowsBundle:Shows:search.html.twig', array('results' => $results));
+        return $this->render(
+            'MerlinTvShowsBundle:Shows:search.html.twig',
+            array('results' => $results, 'shows_active' => true));
     }
 
     public function episodeAction($id, $mode)
