@@ -72,6 +72,7 @@ class ShowsController extends AbstractController
 
     public function editAction($id)
     {
+        /** @var TvShow $show */
         $show = $this
             ->getDoctrine()
             ->getRepository('MerlinTvShowsBundle:TvShow')
@@ -94,7 +95,7 @@ class ShowsController extends AbstractController
                 $em->persist($show);
                 $em->flush();
 
-                $this->flash($show->getTitle() . ' has been updated');
+                $this->flashMessage('notice', $show->getTitle() . ' has been updated');
 
                 $response = new RedirectResponse($this->generateUrl('merlin_tv_shows_homepage'));
                 return $response->send();
