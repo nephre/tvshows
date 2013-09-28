@@ -9,6 +9,6 @@ New search providers should implement `SearchProviderInterface`.
 TODO
 ----
 
-* Active navigation item in menu
-* Handle Isohunt provider (add referer support?)
-* Make better layout
+* Active navigation item in menu (done in lame way)
+* Handle Isohunt provider (done, add referer support)
+* Make better layout (well...)
