@@ -53,7 +53,7 @@ class ShowsController extends AbstractController
                 $em->persist($show);
                 $em->flush();
 
-                $this->flashMessage($show->getTitle() . ' has been added.', 'notice');
+                $this->flashMessage('"' . $show->getTitle() . '" has been added.', 'notice');
 
                 $response = new RedirectResponse($this->generateUrl('merlin_tv_shows_homepage'));
                 $response->prepare($request);
@@ -95,7 +95,7 @@ class ShowsController extends AbstractController
                 $em->persist($show);
                 $em->flush();
 
-                $this->flashMessage('notice', $show->getTitle() . ' has been updated');
+                $this->flashMessage('"' . $show->getTitle() . '" has been updated', 'notice');
 
                 $response = new RedirectResponse($this->generateUrl('merlin_tv_shows_homepage'));
                 return $response->send();
@@ -120,7 +120,7 @@ class ShowsController extends AbstractController
         $em->remove($show);
         $em->flush();
 
-        $this->flashMessage($show->getTitle() . ' has been removed.', 'notice');
+        $this->flashMessage('"' . $show->getTitle() . '" has been removed.', 'notice');
 
         $response = new RedirectResponse($this->generateUrl('merlin_tv_shows_homepage'));
         return $response->send();
