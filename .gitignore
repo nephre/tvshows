@@ -1,3 +1,6 @@
+.idea/
+.composer.lock
+atlassian-ide-plugin.xml
 /web/bundles/
 /app/bootstrap.php.cache
 /app/cache/*
