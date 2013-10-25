@@ -12,3 +12,4 @@ atlassian-ide-plugin.xml
 /vendor/
 /bin/
 /composer.phar
+/app/database
