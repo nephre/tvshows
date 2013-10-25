@@ -99,6 +99,9 @@ class ShowsController extends AbstractController
 
                 $response = new RedirectResponse($this->generateUrl('merlin_tv_shows_homepage'));
                 return $response->send();
+            } else {
+                $errors = $this->get('validator')->validate($show);
+                return $this->render('MerlinTvShowsBundle:Shows:validate.html.twig', array('form' => $form->createView(), 'errors' => $errors, 'active' => 'add'));
             }
         }
 
