@@ -1,3 +1,10 @@
 Merlin\TvShowsBundle\Entity\TvShow:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: title
+    properties:
+        season:
+            - GreaterThan:
+                value: 0
+        episode:
+            - GreaterThan:
+                value: 0

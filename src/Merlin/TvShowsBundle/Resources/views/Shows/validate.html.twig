@@ -2,7 +2,7 @@
 {% block validation %}
 <div class="alert alert-danger alert-dismissable">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>Kurwa, zjebałeś, patrz co:</strong>
+    <strong>Validation failed for following fields:</strong>
     <ul>
     {% for error in errors %}
         <li><em>{{ error.propertyPath }}</em>: {{ error.message }}</li>
