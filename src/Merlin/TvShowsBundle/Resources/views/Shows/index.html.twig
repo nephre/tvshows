@@ -18,6 +18,7 @@
             <h3 class="panel-title">List of TV series you watch</h3>
         </div>
         <div class="panel-body">
+            {% if shows|length > 0 %}
             <form class="form-horizontal" role="form">
                 <div class="form-group">
                     <label for="searchProvider" class="col-xs-3 col-md-2 control-label">Search provider</label>
@@ -69,6 +70,9 @@
                 {% endfor %}
                 </tbody>
             </table>
+            {% else %}
+                No shows. <a href="{{ path('shows_add') }}">Add</a> some.
+            {% endif %}
         </div>
     </div>
 {{ include('MerlinTvShowsBundle:Shows:tbmodal.html.twig') }}
