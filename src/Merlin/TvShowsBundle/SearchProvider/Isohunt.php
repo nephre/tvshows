@@ -35,7 +35,7 @@ class Isohunt extends AbstractSearchProvider
     public function getSearchUrl($query)
     {
         $this->_query = urlencode($query);
-        return sprintf('http://isohunt.com/torrents/%s?iht=-1&ihp=1&ihs1=1&iho1=d', $this->_query);
+        return sprintf('http://isohunt.to/torrents?ihq=%s&Torrent_sort=seeders', $this->_query);
     }
 
     /**
@@ -73,7 +73,7 @@ class Isohunt extends AbstractSearchProvider
 //            $torrentUrl = sprintf('http://ca.isohunt.com/download/%s/%s.torrent', $torrentId, $query);
             // Isohunt probably checks referer url, thus direct url to torrent does not work.
             // fix it later...
-            $torrentUrl = sprintf('http://isohunt.com/torrent_details/%s/%s.torrent', $torrentId, $query);
+            $torrentUrl = sprintf('http://isohunt.to/torrent_details/%s/%s.torrent', $torrentId, $query);
 
             $result = new SearchResult;
             $result->setName($node->filter('a')->eq($titleIdx)->text());
