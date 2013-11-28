@@ -67,9 +67,7 @@ abstract class AbstractSearchProvider implements SearchProviderInterface
      */
     public function search(TvShow $show)
     {
-        $season = str_pad($show->getSeason(), 2, '0', STR_PAD_LEFT);
-        $episode = str_pad($show->getEpisode(), 2, '0', STR_PAD_LEFT);
-        $query = sprintf('%s S%sE%s', $show->getTitle(), $season, $episode);
+        $query = sprintf('%s %s', $show->getTitle(), $show->getFormattedSeasonEpisode());
         $url = $this->getSearchUrl($query);
         $page = $this->getResult($url);
 

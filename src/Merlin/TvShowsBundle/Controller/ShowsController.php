@@ -168,6 +168,7 @@ class ShowsController extends AbstractController
         }
 
         $show->updateAccess();
+        $this->flashMessage('Current episode of "' . $show->getTitle() . '" has been set to ' . $show->getFormattedSeasonEpisode(). '.', 'notice');
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($show);

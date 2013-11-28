@@ -193,4 +193,21 @@ class TvShow
 
         return $this;
     }
+
+    /**
+     * Get current season/episode in format SXXEXX
+     *
+     * @author Daniel Jeznach <daniel.jeznach@smtsoftware.com>
+     * @access public
+     *
+     * @return string
+     */
+    public function getFormattedSeasonEpisode()
+    {
+        $season = str_pad($this->season, 2, '0', STR_PAD_LEFT);
+        $episode = str_pad($this->episode, 2, '0', STR_PAD_LEFT);
+        $se = sprintf('S%sE%s', $season, $episode);
+
+        return $se;
+    }
 }
