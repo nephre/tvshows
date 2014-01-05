@@ -12,3 +12,9 @@ TODO
 * Active navigation item in menu (done in lame way)
 * Handle Isohunt provider (done, add referer support)
 * Make better layout (well...)
+
+BUGS
+----
+
+* Edit tv show, enter episode "-1", click "Edit", get validation error. 
+  Button "Edit" is now "Add", and so is form submit action.
