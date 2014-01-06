@@ -34,7 +34,7 @@ class ThePirateBay extends AbstractSearchProvider
      */
     public function getSearchUrl($query)
     {
-        return sprintf('http://thepiratebay.pe/search/%s/0/7/0', urlencode($query));
+        return sprintf('http://thepiratebay.se/search/%s/0/7/0', urlencode($query));
     }
 
     /**
