@@ -46,7 +46,7 @@
                 {% for show in shows %}
                     <tr>
                         <td>{{ loop.index }}</td>
-                        <td>{{ show.title }}</td>
+                        <td><a href="http://www.imdb.com/find?q={{ show.title }}&s=all" title="Search for {{ show.title }} on imdb.com">{{ show.title }}</a></td>
                         <td>{{ show.season }}</td>
                         <td>{{ show.episode }}</td>
                         <td>
