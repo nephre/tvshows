@@ -1,5 +1,5 @@
 .idea/
-.composer.lock
+/composer.lock
 atlassian-ide-plugin.xml
 /web/bundles/
 /app/bootstrap.php.cache
