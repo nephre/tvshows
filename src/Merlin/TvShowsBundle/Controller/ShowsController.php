@@ -41,6 +41,7 @@ class ShowsController extends AbstractController
         $show = new TvShow;
         $form = $this->createForm('merlin_tvshowsbundle_tvshow', $show);
         $request = Request::createFromGlobals();
+        $parentTemplate = 'MerlinTvShowsBundle:Shows:add.html.twig';
 
         if ($request->isMethod('POST')) {
             $form->submit($request);
@@ -61,13 +62,22 @@ class ShowsController extends AbstractController
                 return $response->send();
             } else {
                 $errors = $this->get('validator')->validate($show);
-                return $this->render('MerlinTvShowsBundle:Shows:validate.html.twig', array('form' => $form->createView(), 'errors' => $errors, 'active' => 'add'));
+                return $this->render('MerlinTvShowsBundle:Shows:validate.html.twig',
+                                     array(
+                                         'form' => $form->createView(),
+                                         'errors' => $errors,
+                                         'active' => 'add',
+                                         'parent_template' => $parentTemplate));
             }
         }
 
         return $this->render(
-            'MerlinTvShowsBundle:Shows:add.html.twig',
-            array('form' => $form->createView(), 'active' => 'add', 'add_show_active' => true));
+            $parentTemplate,
+            array(
+                'form' => $form->createView(),
+                'active' => 'add',
+                'add_show_active' => true,
+                'parent_template' => $parentTemplate));
     }
 
     public function editAction($id)
@@ -84,6 +94,7 @@ class ShowsController extends AbstractController
 
         $form = $this->createForm('merlin_tvshowsbundle_tvshow', $show);
         $request = Request::createFromGlobals();
+        $parentTemplate = 'MerlinTvShowsBundle:Shows:edit.html.twig';
 
         if ($request->isMethod('POST')) {
             $form->submit($request);
@@ -101,11 +112,21 @@ class ShowsController extends AbstractController
                 return $response->send();
             } else {
                 $errors = $this->get('validator')->validate($show);
-                return $this->render('MerlinTvShowsBundle:Shows:validate.html.twig', array('form' => $form->createView(), 'errors' => $errors, 'active' => 'add'));
+                return $this->render('MerlinTvShowsBundle:Shows:validate.html.twig',
+                                     array(
+                                         'form' => $form->createView(),
+                                         'errors' => $errors,
+                                         'active' => 'add',
+                                         'id' => $id,
+                                         'parent_template' => $parentTemplate));
             }
         }
 
-        return $this->render('MerlinTvShowsBundle:Shows:edit.html.twig', array('form' => $form->createView(), 'id' => $id));
+        return $this->render($parentTemplate,
+                             array(
+                                 'form' => $form->createView(),
+                                 'id' => $id,
+                                 'parent_template' => $parentTemplate));
     }
 
     public function deleteAction($id){

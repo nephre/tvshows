@@ -1,7 +1,7 @@
-TV Show Manager
+TV Shows Manager
 ===============
 
-My way to lear SF2. Tool to help keep track of all TV series you watch.
+My way to learn SF2. Tool to help keep track of all TV series you watch.
 As a bonus: links to services providing checksums of files with latest episodes.
 
 New search providers should implement `SearchProviderInterface`.
@@ -16,5 +16,4 @@ TODO
 BUGS
 ----
 
-* Edit tv show, enter episode "-1", click "Edit", get validation error. 
-  Button "Edit" is now "Add", and so is form submit action.
+* Sure, but I've fixed all bugs I managed to find
