@@ -11,14 +11,12 @@ namespace Merlin\TvShowsBundle\SearchProvider;
 
 use Merlin\TvShowsBundle\Entity\SearchResult;
 use Goutte\Client;
-use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\DomCrawler\Crawler;
-use Symfony\Component\DomCrawler\Link;
 /**
  * @package     R-Infiniti
  * @author      Daniel Jeznach <daniel.jeznach@smtsoftware.com>
  */
-class Isohunt extends AbstractSearchProvider
+class Isohunt extends AbstractSearchProvider implements SearchProviderInterface
 {
     /** @var string */
     protected $_query;

@@ -11,17 +11,15 @@ namespace Merlin\TvShowsBundle\SearchProvider;
 
 use Goutte\Client;
 use Merlin\TvShowsBundle\Entity\SearchResult;
-use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\DomCrawler\Crawler;
-use Symfony\Component\DomCrawler\Link;
 
 /**
- * thepiratebay.sx search provider
+ * thepiratebay.* search provider
  *
  * @package     R-Infiniti
  * @author      Daniel Jeznach <daniel.jeznach@smtsoftware.com>
  */
-class ThePirateBay extends AbstractSearchProvider
+class ThePirateBay extends AbstractSearchProvider implements SearchProviderInterface
 {
     /**
      * Returns URL to the results page

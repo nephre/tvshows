@@ -9,8 +9,10 @@ New search providers should implement `SearchProviderInterface`.
 TODO
 ----
 
+* Add Rarbg provider
+* On search screen, print search phrase (show SxxExx)
 * Active navigation item in menu (done in lame way)
-* Handle Isohunt provider (done, add referer support)
+* Handle Isohunt provider (done, add referer support) - (obsolete?)
 * Make better layout (well...)
 
 BUGS

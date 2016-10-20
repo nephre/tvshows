@@ -1,5 +1,5 @@
 <?php
-/**
+/**-
  * AbstractSearchProvider class container 
  *
  * @package     R-Infiniti
@@ -15,7 +15,7 @@ use Merlin\TvShowsBundle\Entity\TvShow;
  * @package     R-Infiniti
  * @author      Daniel Jeznach <daniel.jeznach@smtsoftware.com>
  */
-abstract class AbstractSearchProvider implements SearchProviderInterface
+abstract class AbstractSearchProvider 
 {
     /**
      * List of class names providing search engine handlers
@@ -23,6 +23,7 @@ abstract class AbstractSearchProvider implements SearchProviderInterface
      */
     protected static $providers = array(
         'ThePirateBay'  => 'The Pirate Bay',
+        'Rarbg'         => 'Rarbg',
         'Isohunt'       => 'Isohunt',
     );
 
