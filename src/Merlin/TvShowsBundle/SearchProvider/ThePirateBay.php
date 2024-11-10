@@ -32,7 +32,7 @@ class ThePirateBay extends AbstractSearchProvider implements SearchProviderInter
      */
     public function getSearchUrl($query)
     {
-        return sprintf('http://thepiratebay.se/search/%s/0/7/0', urlencode($query));
+        return sprintf('https://thepiratebay.org/search/%s/0/7/0', urlencode($query));
     }
 
     /**

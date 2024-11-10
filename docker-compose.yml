@@ -1,0 +1,24 @@
+services:
+  tvshows:
+    build:
+      context: docker 
+      dockerfile: Dockerfile.alpine
+    image: tvshows
+    container_name: tvshows
+    restart: unless-stopped
+    ports:
+      - "8000:8000/tcp"
+    volumes:
+      - tvshows:/tvshows/app/database
+    networks:
+      - tvshows
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+
+networks:
+  tvshows:
+
+volumes:
+  tvshows:

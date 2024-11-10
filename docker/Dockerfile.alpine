@@ -1,0 +1,34 @@
+FROM alpine:3.8
+
+RUN apk add --no-cache \
+        composer \
+        curl \
+        git \
+        php7 \
+        php7-ctype \
+        php7-curl \
+        php7-dom \
+        php7-iconv \
+        php7-json \
+        php7-mbstring \
+        php7-openssl \
+        php7-pdo \
+        php7-pdo_sqlite \
+        php7-phar \
+        php7-session \
+        php7-simplexml \
+        php7-tokenizer && \
+    git clone https://github.com/nephre/tvshows.git
+
+WORKDIR /tvshows
+
+RUN COMPOSER_MEMORY_LIMIT=-1 composer install -n
+
+RUN mkdir app/database && \
+    app/console cache:warmup -e prod && \
+    app/console doctrine:database:create -e prod && \
+    app/console doctrine:schema:create -e prod && \
+    app/console assets:install web && \
+    app/console assetic:dump web
+
+CMD app/console -vvv -env prod server:run 0.0.0.0:8000

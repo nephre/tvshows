@@ -1,0 +1,22 @@
+FROM ubuntu:16.04
+
+RUN apt-get update -y && \
+    apt-get install -y \
+        composer \
+        git \
+        php-sqlite3 \
+        php-xml \
+        unzip && \
+    apt-get clean && \
+    git clone https://github.com/nephre/tvshows.git
+
+WORKDIR /tvshows
+
+RUN composer install -n && \
+    mkdir app/database && \
+    app/console cache:warmup -e prod && \
+    app/console doctrine:database:create -e prod && \
+    app/console doctrine:schema:create -e prod && \
+    ./update.sh prod
+
+CMD app/console --env=prod server:run 0.0.0.0:8000 -vvv

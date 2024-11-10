@@ -6,6 +6,12 @@ As a bonus: links to services providing checksums of files with latest episodes.
 
 New search providers should implement `SearchProviderInterface`.
 
+BUILD
+-----
+Build docker image and run it:
+
+docker run --publish 8080:8000 --volume tvshowsdb:/tvshows/app/database --name tvshows --rm --detach tvshows:latest
+
 TODO
 ----
 
