@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:3.8 AS build
 
 RUN apk add --no-cache \
         composer \
@@ -20,8 +20,10 @@ RUN apk add --no-cache \
         php7-tokenizer && \
     git clone https://github.com/nephre/tvshows.git
 
-WORKDIR /tvshows
 
+RUN apk del git curl && \
+    rm -rf /sbin/apk /etc/apk /lib/apk /usr/share/apk /var/lib/apk
+WORKDIR /tvshows
 RUN COMPOSER_MEMORY_LIMIT=-1 composer install -n
 
 RUN mkdir app/database && \
@@ -31,4 +33,26 @@ RUN mkdir app/database && \
     app/console assets:install web && \
     app/console assetic:dump web
 
-CMD app/console -vvv -env prod server:run 0.0.0.0:8000
+FROM alpine:3.8
+
+RUN apk add --no-cache \
+        php7 \
+        php7-ctype \
+        php7-curl \
+        php7-dom \
+        php7-iconv \
+        php7-json \
+        php7-mbstring \
+        php7-openssl \
+        php7-pdo \
+        php7-pdo_sqlite \
+        php7-phar \
+        php7-session \
+        php7-simplexml \
+        php7-tokenizer && \
+    rm -rf /sbin/apk /etc/apk /lib/apk /usr/share/apk /var/lib/apk
+
+COPY --from=build /tvshows /tvshows
+WORKDIR /tvshows
+
+CMD app/console -vvv server:run -e prod 0.0.0.0:8000
